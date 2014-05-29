@@ -1,6 +1,6 @@
 class MainController < UIViewController 
   LEFT_COLUMN  = ['name', 'address', 'phone']
-  RIGHT_COLUMN = ['dogs', 'cats', 'hampsters']
+  RIGHT_COLUMN = ['dogs', 'cats', 'hamsters']
   
   def viewDidLoad
     super
@@ -36,7 +36,7 @@ class MainController < UIViewController
       rmq.append(UITextField, :left_text_field).move(t: 20 + index * 25).tag(tagify(field)).get.placeholder = field
     end
     RIGHT_COLUMN.each_with_index do |field, index|
-      rmq.append(UITextField, :right_text_field, tag: tagify(field)).move(t: 20 + index * 25).tag(tagify(field)).get.placeholder = field
+      rmq.append(UITextField, :right_text_field).move(t: 20 + index * 25).tag(tagify(field)).get.placeholder = field
     end
     
     rmq.append(UILabel, :results_field).get.numberOfLines = 10
