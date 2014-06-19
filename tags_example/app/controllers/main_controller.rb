@@ -33,7 +33,12 @@ class MainController < UIViewController
     # 4. Because RMQ calls return RMQ queries, if we want the actual UITextField,
     #    we have to use the rmq#get method, then we can set the placeholder (chained, yet again)
     LEFT_COLUMN.each_with_index do |field, index|
-      rmq.append(UITextField, :left_text_field).move(t: 20 + index * 25).tag(tagify(field)).get.placeholder = field
+      range = "a#{index}:d#{index}"
+      puts range
+      rmq.append(UITextField, :left_text_field).style{|st| st.frame = "a#{index}:d#{index}"}.
+        get.placeholder = field
+        
+      # rmq.append(UITextField, :left_text_field).move(t: 20 + index * 25).tag(tagify(field)).get.placeholder = field
     end
     RIGHT_COLUMN.each_with_index do |field, index|
       rmq.append(UITextField, :right_text_field).move(t: 20 + index * 25).tag(tagify(field)).get.placeholder = field
